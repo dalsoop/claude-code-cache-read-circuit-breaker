@@ -14,7 +14,10 @@
 ```bash
 claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
 claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
+claude plugin enable claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
+
+> **Note:** The `enable` step is required. Without it, the plugin is installed but the hooks won't run.
 
 ## Incident
 

@@ -14,7 +14,10 @@
 ```bash
 claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
 claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
+claude plugin enable claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
+
+> **주의:** `enable` 단계가 필수입니다. 이 단계 없이는 플러그인이 설치만 되고 hook이 실행되지 않습니다.
 
 ## Incident
 
