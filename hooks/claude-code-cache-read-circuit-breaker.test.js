@@ -42,6 +42,12 @@ test("classify returns WARN for long-lived session size alone", () => {
   assert.match(reason, /history is already large/i);
 });
 
+test("classify returns OK just below all warning thresholds", () => {
+  const [risk, reason] = classify(99_999, 1, 49_999, 499);
+  assert.equal(risk, "OK");
+  assert.match(reason, /no obvious session bloat/i);
+});
+
 test("analyzeTranscript flags high session fixture", () => {
   const result = analyzeTranscript(path.join(base, "session-high.jsonl"), "session-high", fixedNow);
   assert.equal(result.totalEventCount, 4);
@@ -149,6 +155,24 @@ test("analyzeTranscript skips assistant entries with invalid timestamps", () => 
   });
 });
 
+test("analyzeTranscript returns OK for an empty transcript", () => {
+  withTempTranscript([], (file) => {
+    const result = analyzeTranscript(file, "empty-session", fixedNow);
+    assert.equal(result.totalEventCount, 0);
+    assert.equal(result.windowAssistantCount, 0);
+    assert.equal(result.windowCacheRead, 0);
+    assert.equal(result.risk, "OK");
+  });
+});
+
+test("analyzeTranscript returns OK when session filter matches nothing", () => {
+  const result = analyzeTranscript(path.join(base, "session-high.jsonl"), "nope", fixedNow);
+  assert.equal(result.totalEventCount, 0);
+  assert.equal(result.windowAssistantCount, 0);
+  assert.equal(result.windowCacheRead, 0);
+  assert.equal(result.risk, "OK");
+});
+
 test("buildResponse blocks a bloated session", () => {
   const response = buildResponse({
     session_id: "session-high",
@@ -219,6 +243,18 @@ test("buildResponse tolerates PreToolUse-style payloads", () => {
   assert.equal(response.systemMessage, undefined);
 });
 
+test("buildResponse ignores unknown payload fields", () => {
+  const response = buildResponse({
+    hook_event_name: "UserPromptSubmit",
+    session_id: "session-ok",
+    transcript_path: path.join(base, "session-ok.jsonl"),
+    random_field: { anything: true },
+  }, fixedNow);
+
+  assert.equal(response.continue, true);
+  assert.equal(response.systemMessage, undefined);
+});
+
 test("buildResponse blocks at the exact cache-read threshold", () => {
   withTempTranscript([
     JSON.stringify({
@@ -263,6 +299,76 @@ test("buildResponse warns for a long session before hard blocking", () => {
     assert.equal(response.continue, true);
     assert.match(response.systemMessage, /warning/i);
     assert.match(response.systemMessage, /501 events/);
+  });
+});
+
+test("buildResponse blocks at max-events threshold because session size alone is a warning signal", () => {
+  const lines = [];
+  for (let i = 0; i < 1000; i += 1) {
+    lines.push(JSON.stringify({
+      type: "user",
+      sessionId: "session-ok-events",
+      timestamp: "2026-03-27T13:00:00Z",
+    }));
+  }
+
+  withTempTranscript(lines, (file) => {
+    const response = buildResponse({
+      session_id: "session-ok-events",
+      transcript_path: file,
+    }, fixedNow);
+
+    assert.equal(response.continue, false);
+    assert.match(response.systemMessage, /history is already large/i);
+    assert.match(response.stopReason, /1000 events/);
+  });
+});
+
+test("buildResponse uses block over warning when both conditions are true", () => {
+  const lines = [];
+  for (let i = 0; i < 1000; i += 1) {
+    lines.push(JSON.stringify({
+      type: "user",
+      sessionId: "session-precedence",
+      timestamp: "2026-03-27T13:00:00Z",
+    }));
+  }
+  lines.push(JSON.stringify({
+    type: "assistant",
+    sessionId: "session-precedence",
+    timestamp: "2026-03-27T13:30:00Z",
+    message: { usage: { cache_read_input_tokens: 1_050_000 } },
+  }));
+
+  withTempTranscript(lines, (file) => {
+    const response = buildResponse({
+      hook_event_name: "PreToolUse",
+      session_id: "session-precedence",
+      transcript_path: file,
+    }, fixedNow);
+
+    assert.equal(response.continue, false);
+    assert.match(response.stopReason, /looks bloated/);
+    assert.doesNotMatch(response.stopReason, /warning/i);
+  });
+});
+
+test("buildResponse truncates long session ids in block messages", () => {
+  withTempTranscript([
+    JSON.stringify({
+      type: "assistant",
+      sessionId: "1234567890abcdef",
+      timestamp: "2026-03-27T13:20:00Z",
+      message: { usage: { cache_read_input_tokens: 1_000_000 } },
+    }),
+  ], (file) => {
+    const response = buildResponse({
+      session_id: "1234567890abcdef",
+      transcript_path: file,
+    }, fixedNow);
+
+    assert.equal(response.continue, false);
+    assert.match(response.stopReason, /1234567890ab\.\.\./);
   });
 });
 
