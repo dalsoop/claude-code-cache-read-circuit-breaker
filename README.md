@@ -1,5 +1,7 @@
 # claude-code-cache-read-circuit-breaker
 
+A Claude Code plugin that blocks runaway `cache_read_input_tokens`.
+
 [한국어](./README.ko.md)
 
 Using a translator.

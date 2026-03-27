@@ -1,5 +1,7 @@
 # claude-code-cache-read-circuit-breaker
 
+폭주하는 `cache_read_input_tokens`를 막는 Claude Code 플러그인입니다.
+
 [English](./README.md)
 
 번역기를 사용합니다.
