@@ -10,8 +10,8 @@
     {
       "name": "claude-code-cache-read-circuit-breaker",
       "source": {
-        "source": "github",
-        "repo": "dalsoop/claude-code-cache-read-circuit-breaker"
+        "source": "url",
+        "url": "https://github.com/dalsoop/claude-code-cache-read-circuit-breaker.git"
       },
       "description": "Claude Code Circuit Breaker for repeated cache_read_input_tokens in bloated sessions"
     }
