@@ -1,6 +1,6 @@
 # claude-code-cache-read-circuit-breaker
 
-폭주하는 `cache_read_input_tokens`를 막는 Claude Code 플러그인입니다.
+(Circuit Breaker) I used 100% in just 18 minutes? (Max plan)
 
 [English](./README.md)
 
