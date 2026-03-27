@@ -22,15 +22,15 @@ and you can just change the usage number to your liking.
 
 ## Install
 
-```text
-/plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
-/plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
+```bash
+claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
+claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
 ## Uninstall
 
-```text
-/plugin uninstall claude-code-cache-read-circuit-breaker
+```bash
+claude plugin uninstall claude-code-cache-read-circuit-breaker
 ```
 
 ## License

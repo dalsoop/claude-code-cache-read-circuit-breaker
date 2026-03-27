@@ -23,15 +23,15 @@
 
 ## 설치
 
-```text
-/plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
-/plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
+```bash
+claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
+claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
 ## 삭제
 
-```text
-/plugin uninstall claude-code-cache-read-circuit-breaker
+```bash
+claude plugin uninstall claude-code-cache-read-circuit-breaker
 ```
 
 ## 라이선스
