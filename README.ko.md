@@ -9,8 +9,11 @@
   <p><a href="./README.md">English</a></p>
 </div>
 
+Install
+
 ```bash
-claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker && claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
+claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
+claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
 ![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
