@@ -1,6 +1,6 @@
 <div align="center">
   <h1>claude-code-cache-read-circuit-breaker</h1>
-  <p><strong>Claude Code can inflate usage. This plugin is meant to prevent that.</strong></p>
+  <p><strong>(Circuit Breaker) Claude Code can inflate usage. I used 100% in just 18 minutes. This plugin is meant to prevent that.</strong></p>
   <p>
     <a href="https://github.com/dalsoop/claude-code-cache-read-circuit-breaker"><img src="https://img.shields.io/badge/github-dalsoop%2Fclaude--code--cache--read--circuit--breaker-181717?logo=github&logoColor=white" alt="GitHub repository"></a>
     <a href="https://github.com/dalsoop/claude-code-cache-read-circuit-breaker/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-2563eb.svg" alt="MIT License"></a>

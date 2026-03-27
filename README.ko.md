@@ -1,6 +1,6 @@
 <div align="center">
   <h1>claude-code-cache-read-circuit-breaker</h1>
-  <p><strong>Claude Code를 사용하면 사용량이 뻥튀기되는 문제가 있다. 이를 방지하기 위한 플러그인이다.</strong></p>
+  <p><strong>(Circuit Breaker) Claude Code를 사용하면 사용량이 뻥튀기되는 문제가 있다. 나는 18분 만에 100%를 썼다. 이를 방지하기 위한 플러그인이다.</strong></p>
   <p>
     <a href="https://github.com/dalsoop/claude-code-cache-read-circuit-breaker"><img src="https://img.shields.io/badge/github-dalsoop%2Fclaude--code--cache--read--circuit--breaker-181717?logo=github&logoColor=white" alt="GitHub repository"></a>
     <a href="https://github.com/dalsoop/claude-code-cache-read-circuit-breaker/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-2563eb.svg" alt="MIT License"></a>
