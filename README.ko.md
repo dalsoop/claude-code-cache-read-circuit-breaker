@@ -26,10 +26,10 @@
 /plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
-## 로컬 테스트
+## 삭제
 
-```bash
-claude --plugin-dir /path/to/claude-code-cache-read-circuit-breaker
+```text
+/plugin uninstall claude-code-cache-read-circuit-breaker
 ```
 
 ## 라이선스

@@ -25,10 +25,10 @@ and you can just change the usage number to your liking.
 /plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
-## Local Test
+## Uninstall
 
-```bash
-claude --plugin-dir /path/to/claude-code-cache-read-circuit-breaker
+```text
+/plugin uninstall claude-code-cache-read-circuit-breaker
 ```
 
 ## License
