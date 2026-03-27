@@ -11,7 +11,7 @@ const {
   classify,
 } = require("./claude-code-cache-read-circuit-breaker.js");
 
-const base = path.join(__dirname, "..", "testdata", "claude-projects", "demo");
+const base = path.join(__dirname, "..", "fixtures");
 const fixedNow = Date.parse("2026-03-27T14:00:00Z");
 
 function withTempTranscript(lines, fn) {
