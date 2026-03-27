@@ -16,6 +16,8 @@ So I made a simple hook.
 It sets a usage limit,
 and you can just change the usage number to your liking.
 
+![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
+
 ## Install
 
 ```text

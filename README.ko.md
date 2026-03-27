@@ -17,6 +17,8 @@
 사용량 제한을 걸고,
 숫자는 취향대로 바꾸면 됩니다.
 
+![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
+
 ## 설치
 
 ```text
