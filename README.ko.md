@@ -9,16 +9,25 @@
   <p><a href="./README.md">English</a></p>
 </div>
 
-Install
+## Install
 
 ```bash
 claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
 claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
-![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
+## Incident
 
 2026년 3월 27일 22:00-22:18 KST 즈음 발생했습니다.
+
+| 항목 | 값 |
+| --- | --- |
+| 요금제 | Max plan |
+| 시간 구간 | 18분 |
+| 보인 사용량 | 100% |
+| 총합처럼 보인 사용량 | 12,183,667 |
+| cache_read_input_tokens | 12,155,503 |
+| 전체 비중 | 99.77% |
 
 이전에는 이런 걸 겪어본 적이 없어서 별일 아니라고 생각했는데,
 직접 맞아보니까 아니었습니다.

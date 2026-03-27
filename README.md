@@ -9,16 +9,25 @@
   <p><a href="./README.ko.md">한국어</a></p>
 </div>
 
-Install
+## Install
 
 ```bash
 claude plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
 claude plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
 
-![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
+## Incident
 
 Happened on March 27, 2026, around 22:00-22:18 KST.
+
+| Item | Value |
+| --- | --- |
+| Plan | Max plan |
+| Time window | 18 minutes |
+| Seen usage | 100% |
+| Total-like usage | 12,183,667 |
+| cache_read_input_tokens | 12,155,503 |
+| Share of total | 99.77% |
 
 I've never experienced this before, so I just assumed it was no big deal, but I ended up getting hit by it myself.
 
