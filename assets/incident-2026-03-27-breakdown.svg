@@ -1,39 +1,40 @@
-<svg width="1200" height="560" viewBox="0 0 1200 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="560" fill="#F4EFE6"/>
-  <rect x="40" y="36" width="1120" height="488" rx="28" fill="#FFFDF9" stroke="#D8CDBA"/>
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#F7F3EA"/>
+  <rect x="36" y="36" width="1128" height="648" rx="32" fill="#FFFDF8" stroke="#DDD2C1"/>
 
-  <text x="84" y="96" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="22" font-weight="700">(Circuit Breaker) I used 100% in just 18 minutes? (Max plan)</text>
-  <text x="84" y="130" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="18">March 27, 2026 • around 22:00-22:18 KST • agent run</text>
+  <rect x="76" y="76" width="1048" height="120" rx="24" fill="#B23A2A"/>
+  <text x="112" y="132" fill="#FFF8F4" font-family="Arial, sans-serif" font-size="28" font-weight="700">Claude Code can inflate usage</text>
+  <text x="112" y="178" fill="#FFF8F4" font-family="Georgia, serif" font-size="52" font-weight="700">100% in 18 minutes</text>
 
-  <rect x="84" y="164" width="488" height="126" rx="22" fill="#B4452C"/>
-  <text x="116" y="214" fill="#FFF8F2" font-family="Arial, sans-serif" font-size="24" font-weight="700">100% used</text>
-  <text x="116" y="258" fill="#FFF8F2" font-family="Georgia, serif" font-size="46" font-weight="700">12M in 18 minutes</text>
+  <text x="84" y="252" fill="#1C1C1C" font-family="Arial, sans-serif" font-size="22" font-weight="700">March 27, 2026 · around 22:00-22:18 KST · Max plan</text>
 
-  <rect x="596" y="164" width="520" height="126" rx="22" fill="#F7F0E3" stroke="#D8CDBA"/>
-  <text x="628" y="212" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="22" font-weight="700">What actually exploded</text>
-  <text x="628" y="252" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="28" font-weight="700">repeated cache_read_input_tokens</text>
+  <rect x="76" y="286" width="500" height="154" rx="24" fill="#F3E7D7"/>
+  <text x="112" y="338" fill="#6A5C4A" font-family="Arial, sans-serif" font-size="18" font-weight="700">What I saw</text>
+  <text x="112" y="390" fill="#1C1C1C" font-family="Georgia, serif" font-size="50" font-weight="700">12M tokens</text>
+  <text x="112" y="426" fill="#6A5C4A" font-family="Arial, sans-serif" font-size="20">gone in a single short run</text>
 
-  <text x="84" y="336" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="20" font-weight="700">Token breakdown</text>
-  <rect x="84" y="362" width="720" height="48" rx="12" fill="#EEE6D7"/>
-  <rect x="84" y="362" width="718" height="48" rx="12" fill="#B4452C"/>
-  <rect x="802" y="362" width="2" height="48" fill="#FFFDF9"/>
-  <rect x="804" y="362" width="2" height="48" fill="#3D7A6D"/>
-  <rect x="806" y="362" width="1" height="48" fill="#C18B2F"/>
-  <rect x="807" y="362" width="1" height="48" fill="#2F5DA9"/>
+  <rect x="596" y="286" width="528" height="154" rx="24" fill="#1E1E1E"/>
+  <text x="632" y="338" fill="#D8C49A" font-family="Arial, sans-serif" font-size="18" font-weight="700">What actually blew up</text>
+  <text x="632" y="392" fill="#FFFDF8" font-family="Arial, sans-serif" font-size="34" font-weight="700">repeated</text>
+  <text x="632" y="430" fill="#F0B24F" font-family="Arial, sans-serif" font-size="40" font-weight="700">cache_read_input_tokens</text>
 
-  <text x="84" y="438" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="18">Total: 12,183,667</text>
+  <text x="84" y="500" fill="#1C1C1C" font-family="Arial, sans-serif" font-size="22" font-weight="700">Breakdown</text>
+  <rect x="84" y="528" width="860" height="56" rx="16" fill="#EFE5D6"/>
+  <rect x="84" y="528" width="858" height="56" rx="16" fill="#B23A2A"/>
+  <rect x="942" y="528" width="2" height="56" fill="#FFFDF8"/>
+  <rect x="944" y="528" width="2" height="56" fill="#3F7D70"/>
+  <rect x="946" y="528" width="1" height="56" fill="#D0A03B"/>
+  <rect x="947" y="528" width="1" height="56" fill="#3A66B7"/>
 
-  <circle cx="92" cy="474" r="8" fill="#B4452C"/>
-  <text x="110" y="480" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="18">cache_read_input_tokens: 12,155,503</text>
-  <text x="504" y="480" fill="#8A7E6B" font-family="Arial, sans-serif" font-size="18">99.77%</text>
+  <text x="84" y="628" fill="#1C1C1C" font-family="Arial, sans-serif" font-size="20">cache_read_input_tokens: 12,155,503</text>
+  <text x="560" y="628" fill="#8A7B68" font-family="Arial, sans-serif" font-size="20">99.77%</text>
 
-  <circle cx="92" cy="510" r="8" fill="#3D7A6D"/>
-  <text x="110" y="516" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="18">everything else combined: 28,164</text>
+  <text x="84" y="662" fill="#6A5C4A" font-family="Arial, sans-serif" font-size="18">everything else combined: 28,164</text>
 
-  <rect x="842" y="332" width="274" height="184" rx="20" fill="#F8F2E8" stroke="#D8CDBA"/>
-  <text x="872" y="374" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="20" font-weight="700">Why I made this</text>
-  <text x="872" y="412" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="16">- I had never seen this before</text>
-  <text x="872" y="440" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="16">- the agent run felt recursive</text>
-  <text x="872" y="468" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="16">- this felt way too much</text>
-  <text x="872" y="500" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="16" font-weight="700">So I made a simple hook.</text>
+  <rect x="970" y="500" width="154" height="164" rx="20" fill="#F7EFE2" stroke="#DDD2C1"/>
+  <text x="996" y="546" fill="#1C1C1C" font-family="Arial, sans-serif" font-size="18" font-weight="700">So I made</text>
+  <text x="996" y="586" fill="#1C1C1C" font-family="Georgia, serif" font-size="34" font-weight="700">a hook</text>
+  <text x="996" y="622" fill="#6A5C4A" font-family="Arial, sans-serif" font-size="16">to stop</text>
+  <text x="996" y="646" fill="#6A5C4A" font-family="Arial, sans-serif" font-size="16">this kind</text>
+  <text x="996" y="670" fill="#6A5C4A" font-family="Arial, sans-serif" font-size="16">of run.</text>
 </svg>
