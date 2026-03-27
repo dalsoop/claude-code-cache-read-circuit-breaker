@@ -1,0 +1,19 @@
+{
+  "name": "dalsoop-plugins",
+  "owner": {
+    "name": "dalsoop"
+  },
+  "metadata": {
+    "description": "Claude Code plugins from dalsoop"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-cache-read-circuit-breaker",
+      "source": {
+        "source": "github",
+        "repo": "dalsoop/claude-code-cache-read-circuit-breaker"
+      },
+      "description": "Claude Code Circuit Breaker for repeated cache_read_input_tokens in bloated sessions"
+    }
+  ]
+}

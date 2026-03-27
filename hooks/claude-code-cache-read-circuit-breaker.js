@@ -36,8 +36,7 @@ function classify(windowCacheRead, windowAssistantCount, avgCacheRead, totalEven
   return ["OK", "no obvious session bloat signal was detected"];
 }
 
-function analyzeTranscript(transcriptPath, sessionId) {
-  const now = Date.now();
+function analyzeTranscript(transcriptPath, sessionId, now = Date.now()) {
   const windowStart = now - WINDOW_MS;
 
   let totalEventCount = 0;
@@ -96,7 +95,7 @@ function buildResponse(payload, now = Date.now()) {
     return {
       continue: true,
       suppressOutput: true,
-      systemMessage: "save-my-claude-token hook received invalid JSON input",
+      systemMessage: "claude-code-cache-read-circuit-breaker hook received invalid JSON input",
     };
   }
 
@@ -108,23 +107,16 @@ function buildResponse(payload, now = Date.now()) {
   };
 
   if (!transcriptPath) {
-    emit(response);
-    return;
+    return response;
   }
 
   let result;
   try {
-    const originalNow = Date.now;
-    Date.now = () => now;
-    try {
-      result = analyzeTranscript(transcriptPath, sessionId);
-    } finally {
-      Date.now = originalNow;
-    }
+    result = analyzeTranscript(transcriptPath, sessionId, now);
   } catch (error) {
     return {
       ...response,
-      systemMessage: `save-my-claude-token hook could not inspect the current transcript: ${error.message}`,
+      systemMessage: `claude-code-cache-read-circuit-breaker hook could not inspect the current transcript: ${error.message}`,
     };
   }
 
@@ -139,7 +131,7 @@ function buildResponse(payload, now = Date.now()) {
       continue: false,
       suppressOutput: true,
       stopReason:
-        `Blocked by save-my-claude-token: session ${shortId} looks bloated ` +
+        `Blocked by claude-code-cache-read-circuit-breaker: session ${shortId} looks bloated ` +
         `(${result.windowCacheRead} cache-read tokens in the last hour, ${result.totalEventCount} events). ` +
         "Start a fresh Claude session.",
       systemMessage: result.reason,
@@ -150,7 +142,7 @@ function buildResponse(payload, now = Date.now()) {
     return {
       ...response,
       systemMessage:
-        `save-my-claude-token warning: session ${shortId} is growing ` +
+        `claude-code-cache-read-circuit-breaker warning: session ${shortId} is growing ` +
         `(${result.windowCacheRead} cache-read tokens in the last hour, ${result.totalEventCount} events). ` +
         "Consider rotating it soon.",
     };

@@ -1,12 +1,23 @@
 {
-  "description": "Prevent prompt submission when the current Claude transcript already looks bloated",
+  "description": "Prevent prompt submission and tool execution when the current Claude transcript already looks bloated",
   "hooks": {
     "UserPromptSubmit": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/userpromptsubmit.js",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/claude-code-cache-read-circuit-breaker.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/claude-code-cache-read-circuit-breaker.js",
             "timeout": 10
           }
         ]

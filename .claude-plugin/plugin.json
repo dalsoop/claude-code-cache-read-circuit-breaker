@@ -1,15 +1,12 @@
 {
-  "name": "save-my-claude-token",
+  "name": "claude-code-cache-read-circuit-breaker",
   "description": "Claude Code Circuit Breaker for repeated cache_read_input_tokens in bloated sessions",
   "version": "0.1.0",
   "author": {
     "name": "dalsoop"
   },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dalsoop/save-my-claude-token"
-  },
-  "homepage": "https://github.com/dalsoop/save-my-claude-token",
+  "repository": "https://github.com/dalsoop/claude-code-cache-read-circuit-breaker",
+  "homepage": "https://github.com/dalsoop/claude-code-cache-read-circuit-breaker",
   "hooks": "./hooks/hooks.json"
 }

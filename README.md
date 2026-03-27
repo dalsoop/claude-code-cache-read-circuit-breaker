@@ -1,4 +1,4 @@
-# save-my-claude-token
+# claude-code-cache-read-circuit-breaker
 
 [한국어](./README.ko.md)
 
@@ -6,25 +6,18 @@ Claude Code Circuit Breaker for repeated `cache_read_input_tokens`.
 
 ## Quick Start
 
-Hook only:
+Install in Claude:
 
-```bash
-claude --plugin-dir /path/to/save-my-claude-token
+```text
+/plugin marketplace add dalsoop/claude-code-cache-read-circuit-breaker
+/plugin install claude-code-cache-read-circuit-breaker@dalsoop-plugins
 ```
-
-Scanner:
-
-```bash
-save-my-claude-token scan
-```
-
-The hook is self-contained. It does not need the CLI binary on your `PATH`.
 
 ## What It Does
 
 - blocks prompts when a Claude session looks bloated
+- blocks tool execution when the same session already looks bloated
 - focuses on repeated `cache_read_input_tokens`
-- includes an optional local scanner for Claude JSONL logs
 
 ## When It Trips
 
@@ -55,42 +48,12 @@ Window totals:
 
 ## Plugin
 
-This repository includes a Claude plugin with a self-contained `UserPromptSubmit` hook.
+This repository includes a Claude plugin with self-contained `UserPromptSubmit` and `PreToolUse` hooks.
 
 Local test:
 
 ```bash
-claude --plugin-dir /path/to/save-my-claude-token
-```
-
-## Scanner
-
-Optional CLI commands:
-
-```bash
-save-my-claude-token scan
-save-my-claude-token scan --last 24h
-save-my-claude-token scan --session 56a155b1-0617-4c90-831e-1d74c49b509e
-save-my-claude-token scan --json
-```
-
-Developer install:
-
-```bash
-go install github.com/dalsoop/save-my-claude-token/cmd/save-my-claude-token@latest
-```
-
-No Go is required for hook-only use.
-
-## Release Assets
-
-```text
-save-my-claude-token_linux_x86_64.tar.gz
-save-my-claude-token_linux_aarch64.tar.gz
-save-my-claude-token_darwin_x86_64.tar.gz
-save-my-claude-token_darwin_aarch64.tar.gz
-save-my-claude-token_windows_x86_64.zip
-save-my-claude-token_windows_aarch64.zip
+claude --plugin-dir /path/to/claude-code-cache-read-circuit-breaker
 ```
 
 ## Repo Metadata
@@ -104,7 +67,7 @@ Claude Code Circuit Breaker for repeated cache_read_input_tokens in bloated sess
 Suggested release blurb:
 
 ```text
-save-my-claude-token is a Claude Code Circuit Breaker. It trips when repeated cache_read_input_tokens make a session look bloated.
+claude-code-cache-read-circuit-breaker is a Claude Code Circuit Breaker. It trips when repeated cache_read_input_tokens make a session look bloated.
 ```
 
 ## License
