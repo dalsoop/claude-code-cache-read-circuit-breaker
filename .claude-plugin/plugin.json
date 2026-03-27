@@ -7,6 +7,5 @@
   },
   "license": "MIT",
   "repository": "https://github.com/dalsoop/claude-code-cache-read-circuit-breaker",
-  "homepage": "https://github.com/dalsoop/claude-code-cache-read-circuit-breaker",
-  "hooks": "./hooks/hooks.json"
+  "homepage": "https://github.com/dalsoop/claude-code-cache-read-circuit-breaker"
 }
