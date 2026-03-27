@@ -1,0 +1,16 @@
+{
+  "description": "Prevent prompt submission when the current Claude transcript already looks bloated",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/userpromptsubmit.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

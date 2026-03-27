@@ -1,0 +1,41 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="520" fill="#EDF4F3"/>
+  <rect x="48" y="40" width="1104" height="440" rx="24" fill="#FCFEFE" stroke="#BED1CD"/>
+  <text x="84" y="98" fill="#16332E" font-family="Georgia, serif" font-size="34" font-weight="700">Per-response cache re-read pattern</text>
+  <text x="84" y="132" fill="#4D6A64" font-family="Arial, sans-serif" font-size="20">The spike came from repeated reuse of an oversized session, not from typing a massive prompt.</text>
+
+  <line x1="108" y1="404" x2="1080" y2="404" stroke="#B7C9C5" stroke-width="2"/>
+  <line x1="108" y1="188" x2="108" y2="404" stroke="#B7C9C5" stroke-width="2"/>
+
+  <text x="90" y="188" fill="#4D6A64" font-family="Arial, sans-serif" font-size="14">300k</text>
+  <text x="90" y="260" fill="#4D6A64" font-family="Arial, sans-serif" font-size="14">200k</text>
+  <text x="90" y="332" fill="#4D6A64" font-family="Arial, sans-serif" font-size="14">100k</text>
+  <text x="96" y="404" fill="#4D6A64" font-family="Arial, sans-serif" font-size="14">0</text>
+
+  <rect x="140" y="194" width="16" height="210" rx="6" fill="#2E7D6E"/>
+  <rect x="162" y="188" width="16" height="216" rx="6" fill="#2E7D6E"/>
+  <rect x="184" y="196" width="16" height="208" rx="6" fill="#2E7D6E"/>
+  <rect x="206" y="191" width="16" height="213" rx="6" fill="#2E7D6E"/>
+  <rect x="228" y="189" width="16" height="215" rx="6" fill="#2E7D6E"/>
+  <rect x="250" y="194" width="16" height="210" rx="6" fill="#2E7D6E"/>
+  <rect x="272" y="187" width="16" height="217" rx="6" fill="#2E7D6E"/>
+  <rect x="294" y="192" width="16" height="212" rx="6" fill="#2E7D6E"/>
+  <rect x="316" y="190" width="16" height="214" rx="6" fill="#2E7D6E"/>
+  <rect x="338" y="195" width="16" height="209" rx="6" fill="#2E7D6E"/>
+  <rect x="360" y="188" width="16" height="216" rx="6" fill="#2E7D6E"/>
+  <rect x="382" y="193" width="16" height="211" rx="6" fill="#2E7D6E"/>
+  <rect x="404" y="191" width="16" height="213" rx="6" fill="#2E7D6E"/>
+
+  <text x="140" y="432" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">13 responses in one hour</text>
+  <text x="140" y="456" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">Average cache re-read: 294.6k tokens each</text>
+
+  <rect x="738" y="184" width="326" height="220" rx="18" fill="#E8F3F0" stroke="#BED1CD"/>
+  <text x="766" y="226" fill="#16332E" font-family="Arial, sans-serif" font-size="18" font-weight="700">What this means</text>
+  <text x="766" y="264" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">- every response pulled a huge cached</text>
+  <text x="766" y="292" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">  context window back in</text>
+  <text x="766" y="320" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">- chaining tools inside the same session</text>
+  <text x="766" y="348" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">  made the context keep growing</text>
+  <text x="766" y="384" fill="#16332E" font-family="Arial, sans-serif" font-size="16" font-weight="700">Simple prevention</text>
+  <text x="766" y="412" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">Run automation in fresh, non-persistent</text>
+  <text x="766" y="440" fill="#4D6A64" font-family="Arial, sans-serif" font-size="16">sessions and rotate bloated ones early.</text>
+</svg>
