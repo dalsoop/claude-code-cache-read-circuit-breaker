@@ -90,6 +90,20 @@ function emit(obj) {
   process.stdout.write(`${JSON.stringify(obj)}\n`);
 }
 
+function readStdin() {
+  return new Promise((resolve, reject) => {
+    let data = "";
+    process.stdin.setEncoding("utf8");
+    process.stdin.on("data", (chunk) => {
+      data += chunk;
+    });
+    process.stdin.on("end", () => {
+      resolve(data);
+    });
+    process.stdin.on("error", reject);
+  });
+}
+
 function buildResponse(payload, now = Date.now()) {
   if (!payload || typeof payload !== "object") {
     return {
@@ -154,7 +168,7 @@ function buildResponse(payload, now = Date.now()) {
 async function main() {
   let payload;
   try {
-    const raw = fs.readFileSync(0, "utf8");
+    const raw = await readStdin();
     payload = JSON.parse(raw);
   } catch {
     emit(buildResponse(null));
@@ -172,8 +186,12 @@ module.exports = {
   classify,
   analyzeTranscript,
   buildResponse,
+  readStdin,
 };
 
 if (require.main === module) {
-  main();
+  main().catch(() => {
+    emit(buildResponse(null));
+    process.exitCode = 1;
+  });
 }

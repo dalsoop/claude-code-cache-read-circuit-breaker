@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
+const childProcess = require("node:child_process");
 
 const {
   analyzeTranscript,
@@ -22,6 +23,27 @@ function withTempTranscript(lines, fn) {
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
+}
+
+function runHookProcess(input) {
+  const script = path.join(__dirname, "claude-code-cache-read-circuit-breaker.js");
+  return childProcess.spawnSync(process.execPath, [script], {
+    input,
+    encoding: "utf8",
+  });
+}
+
+function requireRunnableChildProcess() {
+  const probe = childProcess.spawnSync(process.execPath, ["-e", "process.stdout.write('ok')"], {
+    encoding: "utf8",
+  });
+  if (probe.error) {
+    return `child_process spawn unavailable in this environment: ${probe.error.message}`;
+  }
+  if (probe.stdout !== "ok") {
+    return "child_process spawn did not return the expected output";
+  }
+  return null;
 }
 
 test("classify returns HIGH for very large cache reads", () => {
@@ -229,6 +251,55 @@ test("buildResponse reports transcript read failure", () => {
 
   assert.equal(response.continue, true);
   assert.match(response.systemMessage, /could not inspect/i);
+});
+
+test("main() emits a pass-through response for invalid stdin JSON", () => {
+  const skipReason = requireRunnableChildProcess();
+  if (skipReason) return test.skip(skipReason);
+
+  const result = runHookProcess("{not-json");
+  assert.equal(result.status, 0);
+  assert.equal(result.stderr, "");
+
+  const parsed = JSON.parse(result.stdout);
+  assert.equal(parsed.continue, true);
+  assert.match(parsed.systemMessage, /invalid json input/i);
+});
+
+test("main() emits a block response for a bloated session payload", () => {
+  const skipReason = requireRunnableChildProcess();
+  if (skipReason) return test.skip(skipReason);
+
+  const result = runHookProcess(JSON.stringify({
+    session_id: "session-high",
+    transcript_path: path.join(base, "session-high.jsonl"),
+  }));
+
+  assert.equal(result.status, 0);
+  assert.equal(result.stderr, "");
+
+  const parsed = JSON.parse(result.stdout);
+  assert.equal(parsed.continue, false);
+  assert.match(parsed.stopReason, /looks bloated/);
+});
+
+test("main() emits a quiet response when transcript_path is missing", () => {
+  const skipReason = requireRunnableChildProcess();
+  if (skipReason) return test.skip(skipReason);
+
+  const result = runHookProcess(JSON.stringify({
+    session_id: "session-ok",
+    hook_event_name: "UserPromptSubmit",
+  }));
+
+  assert.equal(result.status, 0);
+  assert.equal(result.stderr, "");
+
+  const parsed = JSON.parse(result.stdout);
+  assert.deepEqual(parsed, {
+    continue: true,
+    suppressOutput: true,
+  });
 });
 
 test("buildResponse tolerates PreToolUse-style payloads", () => {
