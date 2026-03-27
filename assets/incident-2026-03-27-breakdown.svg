@@ -1,42 +1,39 @@
-<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="520" fill="#F5F1E8"/>
-  <rect x="48" y="40" width="1104" height="440" rx="24" fill="#FFFDF8" stroke="#D8CDBA"/>
-  <text x="84" y="98" fill="#1E1E1E" font-family="Georgia, serif" font-size="34" font-weight="700">March 27, 2026 Incident</text>
-  <text x="84" y="132" fill="#5E5547" font-family="Arial, sans-serif" font-size="20">KST 22:00-23:00. One Claude session made the UI look like I burned 12.18M tokens in an hour.</text>
+<svg width="1200" height="560" viewBox="0 0 1200 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="560" fill="#F4EFE6"/>
+  <rect x="40" y="36" width="1120" height="488" rx="28" fill="#FFFDF9" stroke="#D8CDBA"/>
 
-  <text x="84" y="184" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="20" font-weight="700">Token breakdown</text>
-  <rect x="84" y="212" width="720" height="44" rx="10" fill="#EEE6D7"/>
-  <rect x="84" y="212" width="718" height="44" rx="10" fill="#B4452C"/>
-  <rect x="802" y="212" width="2" height="44" fill="#FFFDF8"/>
-  <rect x="804" y="212" width="2" height="44" fill="#3D7A6D"/>
-  <rect x="806" y="212" width="1" height="44" fill="#C18B2F"/>
-  <rect x="807" y="212" width="1" height="44" fill="#2F5DA9"/>
+  <text x="84" y="96" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="22" font-weight="700">(Circuit Breaker) I used 100% in just 18 minutes? (Max plan)</text>
+  <text x="84" y="130" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="18">March 27, 2026 • around 22:00-22:18 KST • agent run</text>
 
-  <text x="84" y="286" fill="#5E5547" font-family="Arial, sans-serif" font-size="18">Total: 12,183,667</text>
+  <rect x="84" y="164" width="488" height="126" rx="22" fill="#B4452C"/>
+  <text x="116" y="214" fill="#FFF8F2" font-family="Arial, sans-serif" font-size="24" font-weight="700">100% used</text>
+  <text x="116" y="258" fill="#FFF8F2" font-family="Georgia, serif" font-size="46" font-weight="700">12M in 18 minutes</text>
 
-  <circle cx="92" cy="332" r="8" fill="#B4452C"/>
-  <text x="110" y="338" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="18">cache_read_input_tokens: 12,155,503</text>
-  <text x="502" y="338" fill="#8A7E6B" font-family="Arial, sans-serif" font-size="18">99.77%</text>
+  <rect x="596" y="164" width="520" height="126" rx="22" fill="#F7F0E3" stroke="#D8CDBA"/>
+  <text x="628" y="212" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="22" font-weight="700">What actually exploded</text>
+  <text x="628" y="252" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="28" font-weight="700">repeated cache_read_input_tokens</text>
 
-  <circle cx="92" cy="368" r="8" fill="#3D7A6D"/>
-  <text x="110" y="374" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="18">cache_creation_input_tokens: 21,517</text>
-  <text x="502" y="374" fill="#8A7E6B" font-family="Arial, sans-serif" font-size="18">0.18%</text>
+  <text x="84" y="336" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="20" font-weight="700">Token breakdown</text>
+  <rect x="84" y="362" width="720" height="48" rx="12" fill="#EEE6D7"/>
+  <rect x="84" y="362" width="718" height="48" rx="12" fill="#B4452C"/>
+  <rect x="802" y="362" width="2" height="48" fill="#FFFDF9"/>
+  <rect x="804" y="362" width="2" height="48" fill="#3D7A6D"/>
+  <rect x="806" y="362" width="1" height="48" fill="#C18B2F"/>
+  <rect x="807" y="362" width="1" height="48" fill="#2F5DA9"/>
 
-  <circle cx="92" cy="404" r="8" fill="#C18B2F"/>
-  <text x="110" y="410" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="18">output_tokens: 6,597</text>
-  <text x="502" y="410" fill="#8A7E6B" font-family="Arial, sans-serif" font-size="18">0.05%</text>
+  <text x="84" y="438" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="18">Total: 12,183,667</text>
 
-  <circle cx="92" cy="440" r="8" fill="#2F5DA9"/>
-  <text x="110" y="446" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="18">input_tokens: 50</text>
-  <text x="502" y="446" fill="#8A7E6B" font-family="Arial, sans-serif" font-size="18">0.00%</text>
+  <circle cx="92" cy="474" r="8" fill="#B4452C"/>
+  <text x="110" y="480" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="18">cache_read_input_tokens: 12,155,503</text>
+  <text x="504" y="480" fill="#8A7E6B" font-family="Arial, sans-serif" font-size="18">99.77%</text>
 
-  <rect x="842" y="184" width="258" height="232" rx="18" fill="#F8F2E8" stroke="#D8CDBA"/>
-  <text x="870" y="228" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="18" font-weight="700">What actually happened</text>
-  <text x="870" y="266" fill="#5E5547" font-family="Arial, sans-serif" font-size="16">- 42 assistant responses</text>
-  <text x="870" y="294" fill="#5E5547" font-family="Arial, sans-serif" font-size="16">- same long-lived session reused</text>
-  <text x="870" y="322" fill="#5E5547" font-family="Arial, sans-serif" font-size="16">- roughly 280k to 296k cache</text>
-  <text x="870" y="350" fill="#5E5547" font-family="Arial, sans-serif" font-size="16">  tokens re-read each time</text>
-  <text x="870" y="386" fill="#1E1E1E" font-family="Arial, sans-serif" font-size="16" font-weight="700">Interpretation</text>
-  <text x="870" y="414" fill="#5E5547" font-family="Arial, sans-serif" font-size="16">This was mostly repeated cached</text>
-  <text x="870" y="442" fill="#5E5547" font-family="Arial, sans-serif" font-size="16">context, not fresh prompt input.</text>
+  <circle cx="92" cy="510" r="8" fill="#3D7A6D"/>
+  <text x="110" y="516" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="18">everything else combined: 28,164</text>
+
+  <rect x="842" y="332" width="274" height="184" rx="20" fill="#F8F2E8" stroke="#D8CDBA"/>
+  <text x="872" y="374" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="20" font-weight="700">Why I made this</text>
+  <text x="872" y="412" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="16">- I had never seen this before</text>
+  <text x="872" y="440" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="16">- the agent run felt recursive</text>
+  <text x="872" y="468" fill="#6B5F4D" font-family="Arial, sans-serif" font-size="16">- this felt way too much</text>
+  <text x="872" y="500" fill="#1D1D1D" font-family="Arial, sans-serif" font-size="16" font-weight="700">So I made a simple hook.</text>
 </svg>
