@@ -1,6 +1,10 @@
 # claude-code-cache-read-circuit-breaker
 
+![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
+
 (Circuit Breaker) I used 100% in just 18 minutes? (Max plan)
+
+2026년 3월 27일 22:00-22:18 KST 즈음 발생했습니다.
 
 [English](./README.md)
 
@@ -18,8 +22,6 @@
 그래서 단순한 hook를 만들었습니다.
 사용량 제한을 걸고,
 숫자는 취향대로 바꾸면 됩니다.
-
-![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
 
 ## 설치
 

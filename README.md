@@ -1,6 +1,10 @@
 # claude-code-cache-read-circuit-breaker
 
+![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
+
 (Circuit Breaker) I used 100% in just 18 minutes? (Max plan)
+
+Happened on March 27, 2026, around 22:00-22:18 KST.
 
 [한국어](./README.ko.md)
 
@@ -17,8 +21,6 @@ It seems like a recursive phenomenon, but isn't this a bit much?
 So I made a simple hook.
 It sets a usage limit,
 and you can just change the usage number to your liking.
-
-![12 million tokens in 18 minutes](./assets/incident-2026-03-27-breakdown.svg)
 
 ## Install
 
