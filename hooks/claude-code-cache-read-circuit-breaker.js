@@ -3,9 +3,9 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const WINDOW_MS = 60 * 60 * 1000;
-const MAX_CACHE_READ = 1_000_000;
-const MAX_EVENTS = 1000;
+const WINDOW_MS = 15 * 60 * 1000;
+const MAX_CACHE_READ = 50_000;
+const MAX_EVENTS = 100;
 
 function parseTimestamp(value) {
   if (!value) return null;
@@ -15,22 +15,22 @@ function parseTimestamp(value) {
 }
 
 function classify(windowCacheRead, windowAssistantCount, avgCacheRead, totalEventCount) {
-  if (windowCacheRead >= 1_000_000) {
-    return ["HIGH", "cache-read tokens exceeded 1M in the selected window"];
+  if (windowCacheRead >= 50_000) {
+    return ["HIGH", "cache-read tokens exceeded 50k in the selected window"];
   }
-  if (windowAssistantCount >= 20 && avgCacheRead >= 100_000) {
+  if (windowAssistantCount >= 5 && avgCacheRead >= 20_000) {
     return ["HIGH", "many assistant responses reused a very large cached context"];
   }
-  if (totalEventCount >= 1_000 && windowCacheRead >= 500_000) {
+  if (totalEventCount >= 100 && windowCacheRead >= 30_000) {
     return ["HIGH", "a very long-lived session is still driving heavy cache re-reads"];
   }
-  if (windowCacheRead >= 100_000) {
+  if (windowCacheRead >= 15_000) {
     return ["WARN", "cache-read tokens are elevated in the selected window"];
   }
-  if (avgCacheRead >= 50_000) {
+  if (avgCacheRead >= 10_000) {
     return ["WARN", "average cache-read per assistant response is high"];
   }
-  if (totalEventCount >= 500) {
+  if (totalEventCount >= 50) {
     return ["WARN", "session history is already large enough to deserve rotation"];
   }
   return ["OK", "no obvious session bloat signal was detected"];
@@ -146,7 +146,7 @@ function buildResponse(payload, now = Date.now()) {
       suppressOutput: true,
       stopReason:
         `Blocked by claude-code-cache-read-circuit-breaker: session ${shortId} looks bloated ` +
-        `(${result.windowCacheRead} cache-read tokens in the last hour, ${result.totalEventCount} events). ` +
+        `(${result.windowCacheRead} cache-read tokens in the last 15 minutes, ${result.totalEventCount} events). ` +
         "Start a fresh Claude session.",
       systemMessage: result.reason,
     };
@@ -157,7 +157,7 @@ function buildResponse(payload, now = Date.now()) {
       ...response,
       systemMessage:
         `claude-code-cache-read-circuit-breaker warning: session ${shortId} is growing ` +
-        `(${result.windowCacheRead} cache-read tokens in the last hour, ${result.totalEventCount} events). ` +
+        `(${result.windowCacheRead} cache-read tokens in the last 15 minutes, ${result.totalEventCount} events). ` +
         "Consider rotating it soon.",
     };
   }
